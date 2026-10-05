@@ -12,6 +12,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,6 +29,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthorization();
 

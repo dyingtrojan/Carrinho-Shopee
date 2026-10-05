@@ -1,0 +1,48 @@
+@model List<Carrinho_Shopee.Models.CarrinhoItem>
+@{
+ViewData["Title"] = "Meu Carrinho";
+}
+<h1>Meu Carrinho</h1>
+@if (!Model.Any())
+{
+<p>Seu carrinho está vazio.</p>
+}
+else
+{
+<table class="table">
+<thead>
+        <tr>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Subtotal</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var item in Model)
+    {
+            <tr>
+            <td>@item.Nome</td>
+            <td>
+                @item.Preco.ToString("C")
+            </td>
+            <td>
+                @item.Quantidade
+            </td>
+                <td>
+                    @item.Subtotal.ToString("C")
+                </td>
+            </tr>
+            <td>
+                <a asp-controller="Carrinho" asp-action="Remover" asp-route-id="@item.ProdutoId" class="btn btn-danger btn-sm">Remover</a>
+            </td>
+        }
+        </tbody>
+    </table>
+    <h3>
+        Total:
+        @Model.Sum(x => x.Subtotal).ToString("C")
+    </h3>
+}

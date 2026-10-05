@@ -40,6 +40,12 @@
                 <a asp-action="Edit" asp-route-id="@item.Codigo">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Codigo">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Codigo">Delete</a>
+                <a asp-controller="Carrinho"
+                asp-action="Adicionar"
+                asp-route-id="@item.Codigo"
+                class="btn btn-primary">
+                Adicionar ao carrinho
+                </a>
             </td>
         </tr>
 }
